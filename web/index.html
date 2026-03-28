@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IN-9 Spectrum Analyzer - Web Flash</title>
+  <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    .container { max-width: 500px; width: 100%; }
+    h1 { font-size: 2em; color: #ff6b35; text-align: center; margin-bottom: 10px; }
+    .subtitle { text-align: center; color: #4ecdc4; margin-bottom: 40px; }
+    .card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 20px;
+    }
+    .card h2 { color: #4ecdc4; margin-bottom: 20px; }
+    esp-web-install-button { display: block; }
+    esp-web-install-button::part(button) {
+      width: 100%;
+      padding: 20px;
+      font-size: 1.3em;
+      font-weight: bold;
+      background: linear-gradient(135deg, #ff6b35, #ff8c5a);
+      color: white;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+    esp-web-install-button::part(button):hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(255,107,53,0.4);
+    }
+    .steps { list-style: none; counter-reset: step; }
+    .steps li {
+      padding-left: 45px;
+      margin-bottom: 15px;
+      position: relative;
+    }
+    .steps li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      width: 30px;
+      height: 30px;
+      background: #4ecdc4;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    .warning {
+      background: rgba(255,193,7,0.2);
+      border-left: 4px solid #ffc107;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 0 10px 10px 0;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+    .feature {
+      background: rgba(78,205,196,0.1);
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .feature-icon { font-size: 2em; margin-bottom: 5px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔥 IN-9 Spectrum Analyzer</h1>
+    <p class="subtitle">Прошивка ESP32-S3 через браузер</p>
+
+    <div class="card">
+      <h2>⚡ Прошивка</h2>
+      <esp-web-install-button manifest="manifest.json">
+        <button slot="activate">🚀 Установить прошивку</button>
+        <span slot="unsupported">Браузер не поддерживается. Используйте Chrome, Edge или Opera.</span>
+        <span slot="not-allowed">Требуется HTTPS</span>
+      </esp-web-install-button>
+      <div class="warning">
+        ⚠️ Подключите ESP32-S3 по USB. Если не определяется — зажмите BOOT при подключении.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📋 Инструкция</h2>
+      <ol class="steps">
+        <li>Подключите ESP32-S3 к USB</li>
+        <li>Нажмите "Установить прошивку"</li>
+        <li>Выберите COM-порт</li>
+        <li>Дождитесь завершения (~1 мин)</li>
+        <li>Настройте WiFi через веб-интерфейс</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h2>✨ Возможности</h2>
+      <div class="features">
+        <div class="feature"><div class="feature-icon">📊</div>7-полосный спектр</div>
+        <div class="feature"><div class="feature-icon">🌡️</div>CO2 / Темп / Влажн</div>
+        <div class="feature"><div class="feature-icon">⏰</div>Часы с NTP</div>
+        <div class="feature"><div class="feature-icon">📱</div>WiFi веб-интерфейс</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
