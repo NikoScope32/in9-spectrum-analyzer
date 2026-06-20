@@ -1,0 +1,15 @@
+# PlatformIO build output
+firmware/.pio/
+.pio/
+.pioenvs/
+.piolibdeps/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+
+# Build artifacts (note: the prebuilt flasher binaries under web/*.bin ARE tracked
+# on purpose — they are served to the browser by the ESP Web Tools installer)
+*.o
+*.elf
